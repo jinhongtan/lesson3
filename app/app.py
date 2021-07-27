@@ -1,11 +1,13 @@
+from typing import List, Dict
 import simplejson as json
 from flask import Flask, request, Response, redirect
 from flask import render_template
 from flaskext.mysql import MySQL
 from pymysql.cursors import DictCursor
 
+
 app = Flask(__name__)
-mysql = MySQL(cursorclass=DictCursor)
+mysql = MySQL(cursorclass=pymysql.cursors.DictCursor)
 
 app.config['MYSQL_DATABASE_HOST'] = 'db'
 app.config['MYSQL_DATABASE_USER'] = 'root'
