@@ -79,7 +79,7 @@ def form_delete_post(city_id):
 
 
 @app.route('/api/v1/cities', methods=['GET'])
-def api_browse() -> str:
+def api_browse() -> Response:
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblCitiesImport')
     result = cursor.fetchall()
@@ -89,7 +89,7 @@ def api_browse() -> str:
 
 
 @app.route('/api/v1/cities/<int:city_id>', methods=['GET'])
-def api_retrieve(city_id) -> str:
+def api_retrieve(city_id) -> Response:
     cursor = mysql.get_db().cursor()
     cursor.execute('SELECT * FROM tblCitiesImport WHERE id=%s', city_id)
     result = cursor.fetchall()
@@ -99,19 +99,19 @@ def api_retrieve(city_id) -> str:
 
 
 @app.route('/api/v1/cities/', methods=['POST'])
-def api_add() -> str:
+def api_add() -> Response:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
 @app.route('/api/v1/cities/<int:city_id>', methods=['PUT'])
-def api_edit(city_id) -> str:
+def api_edit(city_id) -> Response:
     resp = Response(status=201, mimetype='application/json')
     return resp
 
 
 @app.route('/api/cities/<int:city_id>', methods=['DELETE'])
-def api_delete(city_id) -> str:
+def api_delete(city_id) -> Response:
     resp = Response(status=210, mimetype='application/json')
     return resp
 
